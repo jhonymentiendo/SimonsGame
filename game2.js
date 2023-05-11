@@ -62,11 +62,9 @@ function nextSequence() {
     for (var i = 0; i < gamePattern.length; i++) {
         (function (i) {
             setTimeout(function () {
-                //document.getElementById('text').innerHTML += splittedText[i];
-                //console.log(splittedText[i]);
                 playSound(gamePattern[i]);
                 animatePress(gamePattern[i]);
-            }, 1000 * i);
+            }, 1000 * i );
         })(i);
     };
 
