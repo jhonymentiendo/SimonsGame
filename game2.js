@@ -7,6 +7,23 @@ var userClickedPattern = [];
 var started = false;
 var level = 0;
 
+var tapped=false
+$("body").on("touchstart",function(e){
+    if(!tapped){ //if tap is not set, set up single tap
+      tapped=setTimeout(function(){
+          tapped=null
+          //insert things you want to do when single tapped
+      },300);   //wait 300ms then run single click code
+    } else {    //tapped within 300ms of last tap. double tap
+      clearTimeout(tapped); //stop single tap callback
+      tapped=null
+      $("#level-title").text("Level " + level);
+    nextSequence();
+    started = true;
+    }
+    e.preventDefault()
+});
+
 $(document).dblclick(function() {
   if (!started) {
     $("#level-title").text("Level " + level);
