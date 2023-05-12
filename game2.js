@@ -8,6 +8,11 @@ var started = false;
 var level = 0;
 
 
+function start(){
+  $("#level-title").text("Level " + level);
+  nextSequence();
+  started = true;
+}
 
 var tapped=false
 $("body").on("touchstart",function(e){
@@ -19,34 +24,28 @@ $("body").on("touchstart",function(e){
     } else {    //tapped within 300ms of last tap. double tap
       clearTimeout(tapped); //stop single tap callback
       tapped=null
-      $("#level-title").text("Level " + level);
-    nextSequence();
-    started = true;
+      if (!started) {
+        start()
+      }
     }
     e.preventDefault()
 });
 
 $("#start").click(function() {
   if (!started) {
-    $("#level-title").text("Level " + level);
-    nextSequence();
-    started = true;
+    start()
   }
 });
 
 $(document).dblclick(function() {
   if (!started) {
-    $("#level-title").text("Level " + level);
-    nextSequence();
-    started = true;
+    start()
   }
 });
 
 $(document).keypress(function() {
   if (!started) {
-    $("#level-title").text("Level " + level);
-    nextSequence();
-    started = true;
+    start()
   }
 });
 
