@@ -7,6 +7,8 @@ var userClickedPattern = [];
 var started = false;
 var level = 0;
 
+
+
 var tapped=false
 $("body").on("touchstart",function(e){
     if(!tapped){ //if tap is not set, set up single tap
@@ -22,6 +24,14 @@ $("body").on("touchstart",function(e){
     started = true;
     }
     e.preventDefault()
+});
+
+$("#start").click(function() {
+  if (!started) {
+    $("#level-title").text("Level " + level);
+    nextSequence();
+    started = true;
+  }
 });
 
 $(document).dblclick(function() {
